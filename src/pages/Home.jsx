@@ -18,13 +18,13 @@ export default function Home() {
   useEffect(() => {
     // Hero entrance animations
     const ctx = gsap.context(() => {
-      gsap.fromTo('.hero-animate', 
+      gsap.fromTo('.hero-animate',
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
       )
 
       // Trust section scroll reveals
-      gsap.fromTo('.trust-card', 
+      gsap.fromTo('.trust-card',
         { y: 30, opacity: 0 },
         {
           y: 0,
@@ -40,7 +40,7 @@ export default function Home() {
       )
 
       // Featured services scroll reveals
-      gsap.fromTo('.service-card', 
+      gsap.fromTo('.service-card',
         { y: 30, opacity: 0 },
         {
           y: 0,
@@ -56,7 +56,7 @@ export default function Home() {
       )
 
       // Testimonials scroll reveals
-      gsap.fromTo('.testimonial-card', 
+      gsap.fromTo('.testimonial-card',
         { y: 20, opacity: 0 },
         {
           y: 0,
@@ -72,7 +72,7 @@ export default function Home() {
       )
 
       // How It Works steps
-      gsap.fromTo('.step-item', 
+      gsap.fromTo('.step-item',
         { y: 25, opacity: 0 },
         {
           y: 0,
@@ -111,76 +111,31 @@ export default function Home() {
         {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/90 via-[#0f1e3a]/80 to-[#0a1628]/70 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Hero Text */}
-            <div className="lg:col-span-7 text-center lg:text-left">
-              <span className="hero-animate inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 text-mykleen-blue-light text-sm font-semibold tracking-wide border border-white/20 mb-6">
-                ✨ Your Eco-Friendly Cleaning Partner
-              </span>
-              <h1 className="hero-animate text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
-                The Standard of Clean <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mykleen-blue-light to-mykleen-green-light">
-                  for Home & Office
-                </span>
-              </h1>
-              <p className="hero-animate text-lg sm:text-xl text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
-                Premium cleaning services tailored to your space. We combine eco-safe products and certified specialists for a flawless shine.
-              </p>
-              <div className="hero-animate flex flex-wrap justify-center lg:justify-start gap-4">
-                <Link to="/contact">
-                  <Button variant="primary" size="lg" className="shadow-lg shadow-mykleen-blue-dark/20">
-                    Book a Cleaning
-                  </Button>
-                </Link>
-                <Link to="/projects">
-                  <Button variant="ghost" size="lg">
-                    Explore Services
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Hero Graphic / Badge Card */}
-            <div className="hero-animate lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl animate-float">
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-mykleen-green/20 rounded-full blur-2xl"></div>
-                <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-mykleen-blue/20 rounded-full blur-2xl"></div>
-
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 border-b border-white/10 pb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-mykleen-blue to-mykleen-blue-light flex items-center justify-center text-white">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg">My Kleen Assurance</h3>
-                      <p className="text-slate-400 text-xs">Certified Green & Non-Toxic Products</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-slate-300">Satisfaction Rate</span>
-                      <span className="text-mykleen-green-light font-bold">100% Guaranteed</span>
-                    </div>
-                    <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                      <div className="bg-mykleen-green h-full w-full rounded-full"></div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 pt-2">
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center">
-                      <div className="text-2xl font-extrabold text-white">5.0 ★</div>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Google Rating</div>
-                    </div>
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center">
-                      <div className="text-2xl font-extrabold text-white">10k+</div>
-                      <div className="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Cleaned Spaces</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center flex flex-col items-center justify-center">
+          {/* Hero Text */}
+          <span className="hero-animate inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 text-mykleen-blue-light text-sm font-semibold tracking-wide border border-white/20 mb-6">
+            ✨ Your Eco-Friendly Cleaning Partner
+          </span>
+          <h1 className="hero-animate text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6">
+            The Standard of Clean <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-mykleen-blue-light to-mykleen-green-light">
+              for Home & Office
+            </span>
+          </h1>
+          <p className="hero-animate text-lg sm:text-xl text-slate-300 max-w-2xl leading-relaxed mb-8">
+            Premium cleaning services tailored to your space. We combine eco-safe products and certified specialists for a flawless shine.
+          </p>
+          <div className="hero-animate flex flex-wrap justify-center gap-4">
+            <Link to="/contact">
+              <Button variant="primary" size="lg" className="shadow-lg shadow-mykleen-blue-dark/20">
+                Book a Cleaning
+              </Button>
+            </Link>
+            <Link to="/projects">
+              <Button variant="ghost" size="lg">
+                Explore Services
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -424,7 +379,7 @@ export default function Home() {
         </div>
       </section>
 
-         {/* Testimonials / Social Proof */}
+      {/* Testimonials / Social Proof */}
       <section ref={testimonialsRef} className="py-20 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -441,7 +396,7 @@ export default function Home() {
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                 ))}
               </div>
               <div>
@@ -466,7 +421,7 @@ export default function Home() {
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-yellow-300 fill-yellow-300" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg key={i} className="w-4 h-4 text-yellow-300 fill-yellow-300" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                 ))}
               </div>
               <div>
@@ -491,7 +446,7 @@ export default function Home() {
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                 ))}
               </div>
               <div>
@@ -516,7 +471,7 @@ export default function Home() {
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
               ))}
             </div>
             <p className="text-slate-600 text-sm font-semibold">
@@ -657,6 +612,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </main >
   )
 }
