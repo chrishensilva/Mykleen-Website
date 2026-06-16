@@ -14,39 +14,48 @@ export default function About() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Story section animations
-      gsap.from('.story-animate', {
-        y: 25,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
-      })
+      gsap.fromTo('.story-animate', 
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out',
+        }
+      )
 
       // Core Values grid animations
-      gsap.from('.value-card', {
-        scrollTrigger: {
-          trigger: valuesRef.current,
-          start: 'top 80%',
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.value-card', 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: valuesRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
 
       // Contrast matrix animations
-      gsap.from('.contrast-row', {
-        scrollTrigger: {
-          trigger: contrastRef.current,
-          start: 'top 80%',
-        },
-        y: 15,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.contrast-row', 
+        { y: 15, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: contrastRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
     })
 
     return () => ctx.revert()

@@ -18,65 +18,74 @@ export default function Home() {
   useEffect(() => {
     // Hero entrance animations
     const ctx = gsap.context(() => {
-      gsap.from('.hero-animate', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out'
-      })
+      gsap.fromTo('.hero-animate', 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
+      )
 
       // Trust section scroll reveals
-      gsap.from('.trust-card', {
-        scrollTrigger: {
-          trigger: trustRef.current,
-          start: 'top 80%',
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.trust-card', 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: trustRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
 
       // Featured services scroll reveals
-      gsap.from('.service-card', {
-        scrollTrigger: {
-          trigger: featuredRef.current,
-          start: 'top 80%',
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.service-card', 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: featuredRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
 
       // Testimonials scroll reveals
-      gsap.from('.testimonial-card', {
-        scrollTrigger: {
-          trigger: testimonialsRef.current,
-          start: 'top 80%',
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.testimonial-card', 
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: testimonialsRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
 
       // How It Works steps
-      gsap.from('.step-item', {
-        scrollTrigger: {
-          trigger: howRef.current,
-          start: 'top 80%',
-        },
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.18,
-        ease: 'power2.out'
-      })
+      gsap.fromTo('.step-item', 
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.18,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: howRef.current,
+            start: 'top 80%',
+          }
+        }
+      )
     })
 
     return () => ctx.revert()
