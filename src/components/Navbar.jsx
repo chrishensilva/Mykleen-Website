@@ -1,13 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { gsap } from 'gsap'
 import logo from '../assets/logo.png'
 
 const navLinks = [
-  { path: '/',         label: 'Home' },
-  { path: '/about',    label: 'About' },
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
   { path: '/projects', label: 'Services' },
-  { path: '/contact',  label: 'Contact' },
+  { path: '/contact', label: 'Contact' },
 ]
 
 const announcements = [
@@ -17,24 +16,9 @@ const announcements = [
 ]
 
 export default function Navbar() {
-  const [scrolled,   setScrolled]   = useState(false)
-  const [menuOpen,   setMenuOpen]   = useState(false)
-  const [annIdx,     setAnnIdx]     = useState(0)
-  const navRef  = useRef(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [annIdx, setAnnIdx] = useState(0)
   const location = useLocation()
-
-  useEffect(() => {
-    gsap.fromTo(navRef.current,
-      { y: -80, opacity: 0 },
-      { y: 0,   opacity: 1, duration: 0.8, ease: 'power3.out' }
-    )
-  }, [])
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => { setMenuOpen(false) }, [location])
 
@@ -45,31 +29,25 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header ref={navRef} className="fixed top-0 left-0 right-0 z-50">
+    <header className="absolute top-0 left-0 right-0 z-50">
       {/* Announcement Bar */}
-      <div className={`overflow-hidden transition-all duration-500 ${scrolled ? 'max-h-0 opacity-0' : 'max-h-10 opacity-100'}`}>
-        <div className="bg-mykleen-blue text-white text-xs font-semibold text-center py-2 px-4 flex items-center justify-center gap-4">
-          <span className="transition-all duration-500 text-center">{announcements[annIdx]}</span>
-          <a href="tel:+61400000000" className="hidden sm:inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white text-xs whitespace-nowrap">
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            Call Now
-          </a>
-        </div>
+      <div className="bg-mykleen-blue text-white text-xs font-semibold text-center py-2 px-4 flex items-center justify-center gap-4">
+        <span className="text-center">{announcements[annIdx]}</span>
+        <a href="tel:+61400000000" className="hidden sm:inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white text-xs whitespace-nowrap">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          Call Now
+        </a>
       </div>
 
       {/* Main Navbar */}
-      <div className={`transition-all duration-500 ${
-        scrolled
-          ? 'glass shadow-lg shadow-slate-200/50 py-2'
-          : 'bg-transparent py-4'
-      }`}>
+      <div className="bg-[#0a0f1e]/45 backdrop-blur-md py-4 border-b border-white/5">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3">
             <img
               src={logo}
               alt="My Kleen Logo"
-              className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-20 w-auto object-contain"
             />
           </Link>
 
@@ -79,11 +57,10 @@ export default function Navbar() {
               <li key={path}>
                 <Link
                   to={path}
-                  className={`nav-link pb-1 text-sm font-semibold tracking-wide ${
-                    location.pathname === path
-                      ? 'text-mykleen-blue after:w-full'
-                      : scrolled ? 'text-mykleen-slate' : 'text-white hover:text-white/80 after:bg-white'
-                  }`}
+                  className={`nav-link pb-1 text-sm font-semibold tracking-wide ${location.pathname === path
+                    ? 'text-mykleen-blue after:w-full'
+                    : 'text-white hover:text-white/80 after:bg-white'
+                    }`}
                 >
                   {label}
                 </Link>
@@ -95,20 +72,14 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="tel:+61400000000"
-              className={`flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300 ${
-                scrolled ? 'text-mykleen-slate hover:text-mykleen-blue' : 'text-white/80 hover:text-white'
-              }`}
+              className="flex items-center gap-1.5 text-sm font-semibold text-white/80 hover:text-white transition-colors duration-300"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
               +61 400 000 000
             </a>
             <Link
               to="/contact"
-              className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 ${
-                scrolled
-                  ? 'bg-mykleen-blue text-white hover:bg-mykleen-blue-light shadow-md'
-                  : 'bg-white text-mykleen-blue hover:bg-slate-100 shadow-lg'
-              }`}
+              className="px-6 py-2.5 rounded-full font-semibold text-sm bg-white text-mykleen-blue hover:bg-slate-100 shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             >
               Book a Cleaning
             </Link>
@@ -117,7 +88,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden flex flex-col gap-1.5 p-2 rounded-lg ${scrolled ? 'text-mykleen-slate' : 'text-white'}`}
+            className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg text-white"
             aria-label="Toggle menu"
           >
             <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -134,9 +105,8 @@ export default function Navbar() {
             <li key={path}>
               <Link
                 to={path}
-                className={`block text-base font-semibold py-2 border-b border-slate-100 transition-colors duration-200 ${
-                  location.pathname === path ? 'text-mykleen-blue' : 'text-mykleen-slate hover:text-mykleen-blue'
-                }`}
+                className={`block text-base font-semibold py-2 border-b border-slate-100 transition-colors duration-200 ${location.pathname === path ? 'text-mykleen-blue' : 'text-mykleen-slate hover:text-mykleen-blue'
+                  }`}
               >
                 {label}
               </Link>
